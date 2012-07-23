@@ -24,9 +24,11 @@ public class SilverfishTick{
 		
 		server.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				Location randomChest = chests.get(r.nextInt(chests.size()-1));
-				randomChest.add(0,1,0);
-				randomChest.getWorld().spawnEntity(randomChest, EntityType.SILVERFISH);
+				if(chests.size() > 0){
+					Location randomChest = chests.get(r.nextInt(chests.size()-1));
+					randomChest.add(0,1,0);
+					randomChest.getWorld().spawnEntity(randomChest, EntityType.SILVERFISH);
+				}
 				
 				Player p[] = server.getOnlinePlayers();
 				List<Location> player = new ArrayList<Location>();
