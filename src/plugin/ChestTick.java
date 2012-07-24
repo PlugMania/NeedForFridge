@@ -55,7 +55,7 @@ public class ChestTick{
 					}
 				}
 			}
-		}, 200, 200); // 72000 = 60 Minutes
+		}, 72000, 72000); // 72000 = 60 Minutes
 	}
 	
 }
