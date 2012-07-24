@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -87,6 +88,9 @@ public class NeedForFridge extends JavaPlugin implements Listener {
 				player.sendMessage("Be carefull. Carrying rotten flesh may attract insects.");
 				lastMsg3.put(player, Calendar.getInstance().get(Calendar.DAY_OF_YEAR));
 			}
+			if(silverfishtick.items.contains(event.getItem())){
+				silverfishtick.items.remove(event.getItem());
+			}
 		}
 	}
 	
@@ -100,6 +104,13 @@ public class NeedForFridge extends JavaPlugin implements Listener {
 			if(silverfishtick.chests.contains(event.getBlock().getLocation())){
 				silverfishtick.chests.remove(event.getBlock().getLocation());
 			}
+		}
+	}
+	
+	@EventHandler
+	public void ItemSpawn(ItemSpawnEvent event) {
+		if(event.getEntity().getItemStack().getType() == Material.ROTTEN_FLESH){
+			silverfishtick.items.add(event.getEntity());
 		}
 	}
 	
