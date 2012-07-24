@@ -93,9 +93,12 @@ public class NeedForFridge extends JavaPlugin implements Listener {
 	@EventHandler
 	public void BlockBreak(BlockBreakEvent event) {
 		if(event.getBlock().getType() == Material.CHEST){
-			Chest chest = (Chest)event.getBlock();
+			Chest chest = (Chest)event.getBlock().getState();
 			if(chesttick.chests.containsKey(chest)){
 				chesttick.chests.remove(chest);
+			}
+			if(silverfishtick.chests.contains(event.getBlock().getLocation())){
+				silverfishtick.chests.remove(event.getBlock().getLocation());
 			}
 		}
 	}
