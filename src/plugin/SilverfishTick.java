@@ -43,11 +43,18 @@ public class SilverfishTick{
 						return;
 						
 					case 1:
+						List<Item> del = new ArrayList<Item>();
 						if(items.size() > 0){
 							for(Item i:items){
 								i.getWorld().spawnEntity(i.getLocation(), EntityType.SILVERFISH);
 								i.remove();
-								items.remove(i);
+								del.add(i);
+							}
+							if(del.size() > 0){
+								for(Item i:del){
+									items.remove(i);
+								}
+								del.clear();
 							}
 						}
 						return;
