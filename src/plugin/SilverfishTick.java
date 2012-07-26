@@ -27,7 +27,7 @@ public class SilverfishTick{
 		
 		server.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
-				int r = random.nextInt(2);
+				int r = random.nextInt(3);
 				server.broadcastMessage("Random: "+r);
 				switch (r){
 					case 0:
