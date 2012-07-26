@@ -28,8 +28,10 @@ public class SilverfishTick{
 		server.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			public void run(){
 				int r = random.nextInt(2);
+				server.broadcastMessage("Random: "+r);
 				switch (r){
 					case 0:
+						server.broadcastMessage("Jumped into Chests.");
 						if(chests.size() > 0){
 							List<Location> del = new ArrayList<Location>(); 
 							for(Location l:chests){
@@ -52,6 +54,7 @@ public class SilverfishTick{
 						return;
 						
 					case 1:
+						server.broadcastMessage("Jumped into Items.");
 						List<Item> del = new ArrayList<Item>();
 						if(items.size() > 0){
 							for(Item i:items){
@@ -71,6 +74,7 @@ public class SilverfishTick{
 						return;
 						
 					case 2:
+						server.broadcastMessage("Jumped into Player.");
 						Player player[] = server.getOnlinePlayers();
 						List<Location> location = new ArrayList<Location>();
 						for(Player p:player){
