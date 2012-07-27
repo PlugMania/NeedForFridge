@@ -35,7 +35,7 @@ public class SilverfishTick{
 							for(Location l:chests){
 								if(l.getBlock().getType() == Material.CHEST){
 									l.add(0,1,0);
-									l.getWorld().spawnEntity(l, EntityType.SILVERFISH);
+									l.getWorld().spawnCreature(l, EntityType.SILVERFISH);
 								}else{
 									del.add(l);
 								}
@@ -55,7 +55,7 @@ public class SilverfishTick{
 						List<Item> del = new ArrayList<Item>();
 						if(items.size() > 0){
 							for(Item i:items){
-								i.getWorld().spawnEntity(i.getLocation(), EntityType.SILVERFISH);
+								i.getWorld().spawnCreature(i.getLocation(), EntityType.SILVERFISH);
 								i.remove();
 								del.add(i);
 							}
@@ -81,7 +81,7 @@ public class SilverfishTick{
 						if(location.size() > 0){
 							for(Location l:location){
 								l.add(0,1,0);
-								l.getWorld().spawnEntity(l, EntityType.SILVERFISH);
+								l.getWorld().spawnCreature(l, EntityType.SILVERFISH);
 							}
 						}
 						return;
