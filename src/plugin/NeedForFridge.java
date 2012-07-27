@@ -38,7 +38,7 @@ public class NeedForFridge extends JavaPlugin implements Listener {
 	@EventHandler
 	public void InventoryOpen(InventoryOpenEvent event) {
 		if(event.getInventory().getType() == InventoryType.CHEST){
-			InventoryHolder chest = (Chest)event.getInventory().getHolder();
+			InventoryHolder chest = event.getInventory().getHolder();
 			if(!chesttick.chests.containsKey(chest)){
 				chesttick.chests.put(chest, 3600);
 			}
