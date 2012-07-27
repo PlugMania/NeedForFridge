@@ -15,6 +15,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class NeedForFridge extends JavaPlugin implements Listener {
@@ -37,7 +38,7 @@ public class NeedForFridge extends JavaPlugin implements Listener {
 	@EventHandler
 	public void InventoryOpen(InventoryOpenEvent event) {
 		if(event.getInventory().getType() == InventoryType.CHEST){
-			Chest chest = (Chest)event.getInventory().getHolder();
+			InventoryHolder chest = (Chest)event.getInventory().getHolder();
 			if(!chesttick.chests.containsKey(chest)){
 				chesttick.chests.put(chest, 3600);
 			}
