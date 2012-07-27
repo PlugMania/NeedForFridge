@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
+import org.bukkit.block.DoubleChest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -56,9 +57,16 @@ public class NeedForFridge extends JavaPlugin implements Listener {
 	@EventHandler
 	public void InventoryClose(InventoryCloseEvent event) {
 		if(event.getInventory().getType() == InventoryType.CHEST){
-			Chest chest = (Chest)event.getInventory().getHolder();
-			Location location = chest.getLocation();
-			if(chest.getInventory().contains(Material.ROTTEN_FLESH)){
+			InventoryHolder i = event.getInventory().getHolder();
+			Location location = null;
+			if(i instanceof Chest){
+				Chest chest = (Chest)event.getInventory().getHolder();
+				location = chest.getLocation();
+			}else{
+				DoubleChest chest = (DoubleChest)event.getInventory().getHolder();
+				location = chest.getLocation();
+			}
+			if(i.getInventory().contains(Material.ROTTEN_FLESH)){
 				if(!silverfishtick.chests.contains(location)){
 					silverfishtick.chests.add(location);
 				}
